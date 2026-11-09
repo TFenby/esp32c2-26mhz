@@ -94,7 +94,13 @@ PLATFORMS: dict[str, PlatformConfig] = {
             "variant": "esp32c2",
             "framework": {
                 "type": "esp-idf",
-                "sdkconfig_options": {"CONFIG_XTAL_FREQ_26": "y"},
+                "sdkconfig_options": {
+                    "CONFIG_XTAL_FREQ_26": "y",
+                    # WPA3-SAE fails to associate with some WPA2/WPA3
+                    # transition-mode APs; without it the station joins them
+                    # as WPA2. Tasmota and OpenBeken ship the same setting.
+                    "CONFIG_ESP_WIFI_ENABLE_WPA3_SAE": "n",
+                },
             },
         },
         # Not enough RAM for esp32_improv alongside Wi-Fi

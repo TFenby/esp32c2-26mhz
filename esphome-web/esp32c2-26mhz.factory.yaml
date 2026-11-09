@@ -13,6 +13,7 @@ esp32:
     type: esp-idf
     sdkconfig_options:
       CONFIG_XTAL_FREQ_26: y
+      CONFIG_ESP_WIFI_ENABLE_WPA3_SAE: n
 
 # Enable logging
 logger:

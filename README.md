@@ -11,7 +11,7 @@ Many ESP32-C2 modules, including Espressif's own ESP8684-MINI-1 and ESP8684-WROO
 (the log is gibberish at 115200 baud) and the radio, so it never joins Wi-Fi. ESPHome only
 [warns about the mismatch during a serial upload](https://github.com/esphome/esphome/pull/14582).
 
-This repo is the upstream `esp32c2` config plus one line:
+This repo is the upstream `esp32c2` config plus two lines:
 
 ```yaml
 esp32:
@@ -20,7 +20,12 @@ esp32:
     type: esp-idf
     sdkconfig_options:
       CONFIG_XTAL_FREQ_26: y
+      CONFIG_ESP_WIFI_ENABLE_WPA3_SAE: n
 ```
+
+The second line builds without WPA3-SAE, which fails to associate with some WPA2/WPA3
+transition-mode access points; the device joins those as WPA2 instead. Tasmota and OpenBeken
+build their ESP32 firmware the same way. A WPA3-only network needs a build without that line.
 
 Everything else (generator script, lint, CI, release layout) mirrors esphome/firmware so the
 change can be offered upstream as a new `esp32c2-26mhz` entry.
