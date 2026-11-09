@@ -28,6 +28,9 @@ jobs:
   upload-to-release:
     if: github.event_name == 'release'
     name: Upload to Release
+    # The called workflow uploads release assets; the repo's default token is read-only
+    permissions:
+      contents: write
     needs:
       - build-esphome-web-firmware
     uses: esphome/workflows/.github/workflows/upload-to-gh-release.yml@cc3e76de337dc59bc1cba8da58d963cd23b873f1  # 2026.9.0
