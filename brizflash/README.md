@@ -164,7 +164,7 @@ been written and checked, so you can fix the cause and run the script again.
 | `the controller never connected to our broker` | Usually a typo in the WiFi password, or a network the controller cannot use (see "What you need"). Reset the controller with three quick power-ups and run the script again. |
 | `download timeout` or `download stalled` | A firewall on the computer blocked the download, or the WiFi dropped. Allow Python through the firewall and run the script again. The controller reconnects by itself. |
 | No `esphome-web-26mhz-...` network appears | Wait a minute. If it still does not appear, the controller has gone back to its original firmware (status LED yellow). Run the script again. |
-| The setup page saved, but the lights never show up | The WiFi password was wrong, or the router uses mixed WPA2/WPA3. The setup hotspot comes back after about 90 seconds. For a mixed router, set it to WPA2 during setup, or use a phone hotspot until step 5 is done. |
+| The setup page saved, but the lights never show up | The WiFi password was probably wrong. The setup hotspot comes back after about 90 seconds, so you can try again. The lights are 2.4 GHz only and cannot join a 5 GHz or WPA3-only network. |
 
 The script has a few options for unusual setups (several controllers, several network
 addresses). Run it with `--help` to see them.
