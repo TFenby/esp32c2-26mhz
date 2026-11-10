@@ -30,6 +30,12 @@ build their ESP32 firmware the same way. A WPA3-only network needs a build witho
 Everything else (generator script, lint, CI, release layout) mirrors esphome/firmware so the
 change can be offered upstream as a new `esp32c2-26mhz` entry.
 
+## BrizLabs string lights
+
+This firmware was built to get ESPHome onto BrizLabs "RY" string-light controllers, which have a
+26 MHz ESP8684. [`brizflash/`](brizflash/) holds a script that installs it on them over the air
+through the original firmware's own update command, with a step-by-step guide.
+
 ## Files
 
 | Path | What |
@@ -37,6 +43,7 @@ change can be offered upstream as a new `esp32c2-26mhz` entry.
 | `esphome-web/esp32c2-26mhz.factory.yaml` | the bootstrap firmware config (captive portal, Improv serial, dashboard adoption) |
 | `esphome-web/esp32c2-26mhz.yaml` | the config the ESPHome Builder imports when you adopt the device |
 | `scripts/generate_esphome_web_configs.py` | upstream's generator with the `esp32c2-26mhz` entry; both YAML files are generated from it, never edited by hand |
+| `brizflash/` | over-the-air installer and guide for BrizLabs string lights |
 | `.github/workflows/build.yml` | builds the firmware with ESPHome's reusable workflow on pull requests, on demand, and on a release |
 | `.github/workflows/check-generated-configs.yml`, `yaml-lint.yml` | upstream's checks, unchanged |
 
